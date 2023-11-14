@@ -45,6 +45,7 @@ func _physics_process(_delta: float) -> void:
 	else:
 		if stamina < 100:
 			stamina += 1
+			
 func dash(direction: Vector2):
 	if Input.is_action_just_pressed("dash") and canDash:
 		speed = dashingSpeed
