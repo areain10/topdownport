@@ -9,7 +9,7 @@ var canDash := true
 var dashingSpeed = 2000
 var normalSpeed = 600
 var sprintSpeed = 1000
-var stamina = 100
+var stamina = 500
 var sprint := false
 var weapon = "melee"
 
@@ -49,6 +49,8 @@ func _physics_process(_delta: float) -> void:
 func dash(direction: Vector2):
 	if Input.is_action_just_pressed("dash") and canDash:
 		speed = dashingSpeed
+		stamina -= 50
+		stamina = clamp(stamina,0,10000)
 		canDash = false
 		await get_tree().create_timer(0.1).timeout
 		canDash = true
