@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://tm0gfnnm2vp3"]
+[gd_scene load_steps=10 format=3 uid="uid://tm0gfnnm2vp3"]
 
 [ext_resource type="Script" path="res://Scripts/mainCharacter.gd" id="1_qfsot"]
 [ext_resource type="Script" path="res://Scripts/playermarker.gd" id="2_gl67o"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://Characters/muzzle.gd" id="5_so1ux"]
 [ext_resource type="Script" path="res://Scripts/shieldmarker.gd" id="5_vsfcd"]
 [ext_resource type="Texture2D" uid="uid://bvi3d1wxpnlfk" path="res://sprites/shield1.png" id="6_s8150"]
-[ext_resource type="PackedScene" uid="uid://cy7t1ctnlj44q" path="res://instances/bullet.tscn" id="8_b4fw4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_po4y1"]
 size = Vector2(10.6411, 15.8433)
@@ -48,6 +47,10 @@ script = ExtResource("4_3uge2")
 position = Vector2(73.7449, -76.3101)
 script = ExtResource("5_so1ux")
 
+[node name="muzzle3" type="Marker2D" parent="CharacterBody2D/Marker2D/Sprite2D"]
+position = Vector2(-0.62735, -76.3098)
+script = ExtResource("5_so1ux")
+
 [node name="muzzle2" type="Marker2D" parent="CharacterBody2D/Marker2D/Sprite2D"]
 position = Vector2(-73.29, -76.3096)
 script = ExtResource("5_so1ux")
@@ -65,5 +68,3 @@ offset = Vector2(296.342, -100.979)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Marker2D2"]
 position = Vector2(159, 4.5)
 shape = SubResource("RectangleShape2D_c5rb4")
-
-[node name="bullet" parent="." instance=ExtResource("8_b4fw4")]
