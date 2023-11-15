@@ -3,14 +3,18 @@ extends Marker2D
 var bullet = preload("res://instances/bullet.tscn")
 var canBullet := true
 var bulletTime = 0.5
+
+@onready var node = $muzzle3
+@onready var playerPos = node.position
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if  Input.is_action_pressed("shoot"):
 		if canBullet:
-			var bullet_direction = self.global_position.direction_to(get_global_mouse_position())
+			var bullet_direction = playerPos.direction_to(get_global_mouse_position())
 			fire(bullet_direction)
 		bulletTime -= bulletTime/80
 		bulletTime = clamp(bulletTime,0.05,5)

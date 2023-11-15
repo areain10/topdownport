@@ -12,9 +12,17 @@ var sprintSpeed = 1300
 var stamina = 500
 var sprint := false
 var weapon = "melee"
+#Fire
+var bullet = preload("res://instances/bullet.tscn")
+var canBullet := true
+var bulletTime = 0.5
 
+@onready var muzzle1 = $Marker2D/Sprite2D/muzzle
+@onready var muzzle2 = $Marker2D/Sprite2D/muzzle2
+@onready var characterPos = $Marker2D
 # We map a direction to a frame index of our AnimatedSprite node's sprite frames.
 # See how we use it below to update the character's look direction in the game.
+
 
 func _physics_process(_delta: float) -> void:
 	# Once again, we call `Input.get_action_strength()` to support analog movement.
@@ -45,6 +53,17 @@ func _physics_process(_delta: float) -> void:
 	else:
 		if stamina < 100:
 			stamina += 1
+	
+	if  Input.is_action_pressed("shoot"):
+		if canBullet:
+			var bullet_direction = characterPos.global_position.direction_to(get_global_mouse_position())
+			fire(bullet_direction, muzzle1.global_position)
+			fire(bullet_direction, muzzle2.global_position)
+		bulletTime -= bulletTime/80
+		bulletTime = clamp(bulletTime,0.05,5)
+	else:
+		bulletTime += 0.0005
+		bulletTime = clamp(bulletTime,0.05,0.5)
 			
 func dash(direction: Vector2):
 	if Input.is_action_just_pressed("dash") and canDash:
@@ -68,3 +87,12 @@ func change_weapon():
 	elif Input.is_action_just_pressed("air_weapon"):
 		weapon = "air"
 # The code below updates the character's sprite to look in a specific direction.
+
+func fire(bullet_direction: Vector2, muzzle_position: Vector2):
+	canBullet = false
+	var bulletInst = bullet.instantiate()
+	get_tree().current_scene.add_child(bulletInst)
+	bulletInst.rotation = bullet_direction.angle()
+	bulletInst.global_position = muzzle_position
+	await get_tree().create_timer(bulletTime).timeout
+	canBullet = true

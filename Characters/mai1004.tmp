@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://tm0gfnnm2vp3"]
+[gd_scene load_steps=10 format=3 uid="uid://tm0gfnnm2vp3"]
 
 [ext_resource type="Script" path="res://Scripts/mainCharacter.gd" id="1_qfsot"]
 [ext_resource type="Script" path="res://Scripts/playermarker.gd" id="2_gl67o"]
 [ext_resource type="Texture2D" uid="uid://nbwoyxpwb866" path="res://sprites/mech1.png" id="3_c8wsk"]
 [ext_resource type="Script" path="res://Scripts/RigidBody2D.gd" id="4_3uge2"]
+[ext_resource type="Script" path="res://Characters/muzzle.gd" id="5_so1ux"]
 [ext_resource type="Script" path="res://Scripts/shieldmarker.gd" id="5_vsfcd"]
 [ext_resource type="Texture2D" uid="uid://bvi3d1wxpnlfk" path="res://sprites/shield1.png" id="6_s8150"]
 
@@ -43,13 +44,20 @@ rotation = -1.5708
 script = ExtResource("4_3uge2")
 
 [node name="muzzle" type="Marker2D" parent="CharacterBody2D/Marker2D/Sprite2D"]
+visible = false
 position = Vector2(73.7449, -76.3101)
+script = ExtResource("5_so1ux")
+
+[node name="muzzle3" type="Marker2D" parent="CharacterBody2D/Marker2D/Sprite2D"]
+position = Vector2(0.227448, -76.3098)
+script = ExtResource("5_so1ux")
 
 [node name="muzzle2" type="Marker2D" parent="CharacterBody2D/Marker2D/Sprite2D"]
+visible = false
 position = Vector2(-73.29, -76.3096)
+script = ExtResource("5_so1ux")
 
 [node name="Marker2D2" type="Marker2D" parent="CharacterBody2D"]
-position = Vector2(8, 23)
 script = ExtResource("5_vsfcd")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/Marker2D2"]
