@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+class_name Player
+
+signal staminaChanged
 
 var speed := 500
 
@@ -9,7 +12,8 @@ var canDash := true
 var dashingSpeed = 2000
 var normalSpeed = 600
 var sprintSpeed = 1300
-var stamina = 500
+@export var maxStamina = 500
+@onready var stamina: int = maxStamina
 var sprint := false
 var weapon = "melee"
 #Fire
@@ -50,9 +54,11 @@ func _physics_process(_delta: float) -> void:
 	
 	if sprint == true:
 		stamina -= 1
+		staminaChanged.emit()
 	else:
-		if stamina < 100:
+		if stamina < 500:
 			stamina += 1
+			staminaChanged.emit()
 	
 	if  Input.is_action_pressed("shoot"):
 		if canBullet:
@@ -69,6 +75,7 @@ func dash(direction: Vector2):
 	if Input.is_action_just_pressed("dash") and canDash:
 		speed = dashingSpeed
 		stamina -= 50
+		staminaChanged.emit()
 		stamina = clamp(stamina,0,10000)
 		canDash = false
 		await get_tree().create_timer(0.1).timeout

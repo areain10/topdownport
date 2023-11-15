@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://diad4s8wgoxar"]
+
+[ext_resource type="Script" path="res://Scripts/StaminaBar.gd" id="1_7l3ya"]
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="StaminaBar" type="ProgressBar" parent="."]
+offset_right = 278.0
+offset_bottom = 121.0
+step = 1.0
+script = ExtResource("1_7l3ya")

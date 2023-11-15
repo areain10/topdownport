@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://cwos1guc4yxyk"]
+
+[ext_resource type="Script" path="res://Scripts/mainCharacter.gd" id="1_8nulm"]
+[ext_resource type="Script" path="res://Scripts/playermarker.gd" id="1_54vak"]
+[ext_resource type="Texture2D" uid="uid://nbwoyxpwb866" path="res://sprites/mech1.png" id="2_onne7"]
+[ext_resource type="Script" path="res://Scripts/RigidBody2D.gd" id="3_scqqf"]
+[ext_resource type="Script" path="res://Scripts/shieldmarker.gd" id="4_4ty8y"]
+[ext_resource type="Texture2D" uid="uid://bvi3d1wxpnlfk" path="res://sprites/shield1.png" id="5_e856c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pp4p7"]
+size = Vector2(10.6411, 15.8433)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ihuk2"]
+size = Vector2(36, 231)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_8nulm")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+script = ExtResource("1_54vak")
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D"]
+position = Vector2(21.7335, 21.7336)
+rotation = 1.5708
+scale = Vector2(1.16979, 1.16979)
+texture = ExtResource("2_onne7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D/Sprite2D"]
+position = Vector2(-4.04645, 11.1918)
+rotation = -1.5708
+scale = Vector2(15, 15)
+shape = SubResource("RectangleShape2D_pp4p7")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Marker2D/Sprite2D"]
+rotation = -1.5708
+script = ExtResource("3_scqqf")
+
+[node name="muzzle" type="Marker2D" parent="Marker2D/Sprite2D"]
+position = Vector2(73.7449, -76.3101)
+
+[node name="muzzle2" type="Marker2D" parent="Marker2D/Sprite2D"]
+position = Vector2(-73.29, -76.3096)
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(8, 23)
+script = ExtResource("4_4ty8y")
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D2"]
+position = Vector2(-174, 44)
+scale = Vector2(1.01235, 1.79245)
+texture = ExtResource("5_e856c")
+centered = false
+offset = Vector2(296.342, -100.979)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D2"]
+position = Vector2(159, 4.5)
+shape = SubResource("RectangleShape2D_ihuk2")

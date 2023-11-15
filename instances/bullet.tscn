@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://cy7t1ctnlj44q"]
 
 [ext_resource type="Script" path="res://Characters/bullet.gd" id="1_j13oc"]
-[ext_resource type="Texture2D" uid="uid://xl3vx8uoayqj" path="res://icon.svg" id="2_1341k"]
+[ext_resource type="Texture2D" uid="uid://cbeflp3ggm2gr" path="res://sprites/13.png" id="2_5xpax"]
 
 [node name="bullet" type="Area2D"]
 rotation = 0.785398
 script = ExtResource("1_j13oc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = 0.785398
-scale = Vector2(0.07, -0.455)
-texture = ExtResource("2_1341k")
+rotation = -3.14159
+scale = Vector2(0.37, 0.37)
+texture = ExtResource("2_5xpax")

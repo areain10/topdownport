@@ -15,12 +15,7 @@ size = Vector2(36, 231)
 
 [node name="MainCharacterNode" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1394, 680)
-zoom = Vector2(0.475, 0.475)
-
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(1400, 683)
 script = ExtResource("1_qfsot")
 
 [node name="Marker2D" type="Marker2D" parent="CharacterBody2D"]
@@ -62,3 +57,5 @@ offset = Vector2(296.342, -100.979)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Marker2D2"]
 position = Vector2(159, 4.5)
 shape = SubResource("RectangleShape2D_c5rb4")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
